@@ -79,6 +79,7 @@ Le principe est de créer une classe par table de la base de données :
 Exemple de modèle défini dans models.py :
 ```python 
 from django.db import models
+
 class MyObject(models.Model):
     label = models.CharField('Nom', max_length = 5)
     description = models.CharField('Description', max_length = 100)
@@ -137,7 +138,7 @@ Méthodes à rajouter aux classes modèles :
 rajouter une méthode __str__, si on veut renvoyer une représentation de l'objet, ce qui est quasi-indispensable.
 
 
-## Modèles avec relations 1-n ou n-n
+## Modèles avec relations 1-n
 
 On prend comme exemple le modèle suivant :
 - Destination (id, ville).
@@ -150,11 +151,12 @@ On utilise un champ avec le type ForeignKey et la classe en argument.
 exemple en reprenant les tables ci-dessus :
 
 ``` python 
-from django.db.models import Model, CharField, FloatField, ForeignKey
-class Destination(Model):
-    ville = CharField(max_length = 10)
+from django.db.models import Model
+
+class Destination(models.Model):
+    ville = models.CharField(max_length = 10)
 class Voyage(Model):
-    destination = ForeignKey(Destination)
+    destination = models.ForeignKey(Destination)
     prix = FloatField()
 ```
 
