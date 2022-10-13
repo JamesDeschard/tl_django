@@ -7,7 +7,7 @@
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Create car">
+    <input type="submit" value="{{title}} car">
 </form>
 
 
