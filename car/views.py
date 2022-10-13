@@ -1,23 +1,62 @@
-import time
-import os
-import requests
-from django.http import HttpResponse, StreamingHttpResponse, JsonResponse, FileResponse
-from django.conf import settings
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+
+from .models import Vehicle
+from .forms import VehicleForm
 
 
 def home(request):
-    return HttpResponse('Hello World')
+    cars = Vehicle.objects.all()
+    paginator = Paginator(cars, 10) # Show 25 contacts per page.
 
-def generate_numbers(n):
-    for i in range(n):
-        yield str(i)
-        time.sleep(1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'home.html', context)
 
-def streaming_example(request):
-    return StreamingHttpResponse(generate_numbers(100))
 
-def json_response_example(request):
-    return JsonResponse({'name': 'John', 'age': 30})
+def detail(request, pk):
+    car = Vehicle.objects.get(pk=pk)
+    context = {
+        'car': car
+    }
+    return render(request, 'detail.html', context)
 
-def file_response_example(request):
-    return FileResponse(open(os.path.join(settings.BASE_DIR, 'Cars.csv'), 'rb'))
+
+def create(request):
+    if request.method == 'POST':
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = VehicleForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'create.html', context)
+
+
+def update(request, pk):
+    car = Vehicle.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = VehicleForm(request.POST, instance=car)
+        if form.is_valid():
+            form.save()
+            return redirect('detail', pk=pk)
+    else:
+        form = VehicleForm(instance=car)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'create.html', context)
+
+
+def delete(request, pk):
+    car = Vehicle.objects.get(pk=pk)
+    car.delete()
+    return redirect('home')

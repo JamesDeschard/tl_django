@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<a href="{% url 'home'%}">Back to home</a>
+
+<h1>Create a form</h1>
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Create car">
+</form>
+
+
+
+{% endblock %}

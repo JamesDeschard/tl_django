@@ -36,8 +36,8 @@ class Vehicle(models.Model):
     wikipedia_profile = models.URLField()
     description = models.TextField()
     
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.pk})
-    
     def __str__(self) -> str:
         return self.car_name
+
+
+    

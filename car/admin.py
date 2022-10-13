@@ -4,4 +4,5 @@ from .models import Vehicle
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
     pass
-# Register your models here.
+
+
