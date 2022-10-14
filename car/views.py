@@ -51,7 +51,6 @@ def create(request):
         form = VehicleForm()
 
     context = {'title': 'Create', 'form': form}
-
     return render(request, 'create.html', context)
 
 
@@ -67,7 +66,6 @@ def update(request, pk):
         form = VehicleForm(instance=car)
 
     context = {'title': 'Update', 'id': pk, 'form': form}
-
     return render(request, 'create.html', context)
 
 
