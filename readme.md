@@ -532,7 +532,7 @@ Les commentaires ressemblent à ceci :
 
 Une balise `{% comment %} `autorise des commentaires sur plusieurs lignes.
 
-Example d'une page HTML générée avec le moteur de gabarits.
+### Example d'une page HTML générée avec le moteur de gabarits.
 
 ```html
 <div class="cars">
