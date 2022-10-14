@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<br>
+<h1 align="center">Results for "{{ search }}"</h1>
+<a href="{% url 'create' %}">Create a new car</a>
+
+{% include 'list_view.html' %}
+
+{% endblock %}

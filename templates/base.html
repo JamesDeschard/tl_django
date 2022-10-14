@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="searchbar">
+        <form action="{% url 'search' %}" method="get">
+            <input type="text" placeholder="Search.." name="search">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
 </body>
+<script src="{% static 'js/main.js'%}"></script>
 </html>

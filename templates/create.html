@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content%}
+{% if title == 'Create'%}
 <a href="{% url 'home'%}">Back to home</a>
+{% else %}
+<a href="{% url 'detail' id %}">Back to car</a>
+{% endif %}
 
-<h1>Create a form</h1>
+<h1 align="center">Add a new car</h1>
+<hr>
+<br>
+
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="{{title}} car">
 </form>
 
-
+<br>
 
 {% endblock %}

@@ -1,3 +1,4 @@
+from enum import auto
 from django.db import models
 from django.shortcuts import reverse
 
@@ -38,6 +39,15 @@ class Vehicle(models.Model):
     
     def __str__(self) -> str:
         return self.car_name
+
+
+class Comment(models.Model):
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
+    comment = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self) -> str:
+        return f'Comment id: {self.pk} on {self.vehicle}'
 
 
     

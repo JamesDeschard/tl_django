@@ -1,0 +1,18 @@
+<hr>
+
+<div class="cars">
+    <ol>
+        {% for car in cars %}
+        <li>
+            <h3>
+                <a href="{% url 'detail' car.pk %}">
+                    {{ car.car_name }}</a>
+            </h3>
+            <p>{{ car.description }}</p>
+            <a href="{% url 'delete' car.pk %}">Delete this car</a>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<br>

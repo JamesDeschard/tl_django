@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<h1>{{ car.car_name }}</h1>
+<p><a href="{% url 'home' %}">homepage</a> </p>
+<p><a href="{% url 'update' car.pk %}">update</a></p>
+<p><a href="{% url 'delete' car.pk %}">delete</a></p>
+
+<h1 align="center">{{ car.car_name }}</h1>
+<hr>
+<br>
 
 <div class="car">
     <img src="{{car.image}}" height="300" width="300">
@@ -9,9 +15,26 @@
     <p>Price: {{ car.adjusted_price }}</p>
     <p>Year: {{ car.model_year }}</p>
     <p>{{ car.description }}</p>
-    <a href="{% url 'update' car.pk %}">Update</a>
-</div>
+    <hr>
 
-<a href="{% url 'home' %}">Let's go back home!</a>
+    {% for comment in comments %}
+    <p>{{ comment.comment }}</p>
+    <p>{{comment.date}}</p>
+    <hr>
+    {% empty %}
+    <p>No comments yet..!</p>
+    {% endfor %}
+
+    <p>Feel free to leave a comment:</p>
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token%}
+        {{ form.as_p }}
+        <input type="submit" value="Add comment">
+    </form>
+
+    <br>
+
+</div>
 
 {% endblock %}
