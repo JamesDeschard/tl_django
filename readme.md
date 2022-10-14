@@ -275,7 +275,7 @@ Au sein de cette variablem, Django parcourt chaque motif d’URL dans l’ordre 
 
 Une fois qu’un des motifs d’URL correspond, Django importe et appel la vue correspondante, qui est une fonction Python (le second parametre de l'objet `path`). La fonction est appelée et Django lui passe l'argument `request`.
 
-Example: 
+#### Example: 
 
 ```python
 from django.urls import path
@@ -292,7 +292,7 @@ Si nous raffraichissons la homepage de notre application (page cotnenant uniquem
 
 Il est egalement possible de faire passer d'autres paramètres nommés.
 
-Example:
+#### Example:
 
 ```python
 from django.urls import include, path
@@ -351,7 +351,7 @@ Le nom complet d’un gabarit à utiliser ou une liste de noms de gabarits. Si u
 context
 Un dictionnaire de valeurs à ajouter un contexte du gabarit. Par défaut, ce dictionnaire est vide. Si une des valeurs du dictionnaire est exécutable, la vue l’appellera immédiatement avant de faire le rendu du gabarit.
 
-Exemple:
+#### Exemple:
 
 ```python
 from django.shortcuts import render
@@ -414,7 +414,7 @@ Si vous construisez une application basée sur une base de données, il y a des 
 
 C’est pour cette raison que Django fournit une classe utilitaire permettant de créer une classe de formulaire Form à partir d’un modèle Django.
 
-Par exemple :
+#### Exemple :
 
 ```python
 from django import forms
@@ -436,7 +436,7 @@ Le paramètre fields permet de définir les attributs du modèle que nous voulon
 
 ### Validation du formulaire dans la vue
 
-Exemple:
+#### Exemple:
 
 ```python
 def create(request):
@@ -532,7 +532,7 @@ Les commentaires ressemblent à ceci :
 
 Une balise `{% comment %} `autorise des commentaires sur plusieurs lignes.
 
-### Example d'une page HTML générée avec le moteur de gabarits.
+#### Example d'une page HTML générée avec le moteur de gabarits.
 
 ```html
 <div class="cars">
