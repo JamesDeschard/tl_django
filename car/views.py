@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 
 from .models import Vehicle
 from .forms import VehicleForm, CommentForm
-
+        
 
 def search(request):
     search = request.GET.get('search')
