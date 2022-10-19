@@ -4,7 +4,7 @@
 - Pour Mac:
 ```bash
 python3 -m venv venv 
-python3 source venv/bin/activate
+source venv/bin/activate
 ```
 
 - Pour windows:
